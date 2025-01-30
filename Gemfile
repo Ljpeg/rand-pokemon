@@ -15,6 +15,9 @@ gem "sinatra-activerecord"
 gem "http"
 gem "dotenv"
 
+gem "poke-api-v2"
+gem "json"
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
