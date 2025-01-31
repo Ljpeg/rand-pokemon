@@ -1,9 +1,12 @@
 
-<h1> Who's that Pokemon? </h1>
+<h1> Who's your Pokemon? </h1>
+<div class="img-container">
+<img src="<%= @pic %>">
+</div>
 
-<div>
-  <p> Your randomly generated pokemon is: <%= @name %> </p>
+<div class="content-container">
+  <p> You  got a <%= @name %>!</p>
   <p> <%= @name %> weighs <%= @weight %> hectograms and is <%= @height %> decimeters tall! </p>
 </div>
 
-<a href="/new"> Get a different pokemon! </a>
+<a href="/new"> Get a different pokemon!</a> | <a href="/"> Back home</a>
