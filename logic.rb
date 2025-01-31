@@ -24,3 +24,5 @@ poke_types = parsed_results["types"].map { |i| i["type"]["name"] }
 num_moves = parsed_results["moves"].count
 moves_list = parsed_results["moves"].map { |i| i["move"]["name"]}
 random_move = moves_list.sample
+picture = parsed_results["sprites"]["front_default"] || parsed_results["sprites"]["front_shiny"] || parsed_results["sprites"]["front_female"]
+pp picture

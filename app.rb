@@ -7,7 +7,6 @@ require "json"
 get("/") do
   "
   <h1>Welcome to your Pokemon Generator</h1>
-  <a href='/new'> Start Generating Pokemon</a>
   "
   erb(:home)
 end
@@ -26,6 +25,7 @@ parsed_results = JSON.parse(results)
 @moves = parsed_results["moves"].map { |i| i["move"]["name"]}
 @num_moves = parsed_results["moves"].count
 @random_move = @moves.sample
+@picture = parsed_results["sprites"]["front_default"] || parsed_results["sprites"]["front_shiny"] || parsed_results["sprites"]["front_female"]
 
 erb(:pokemon)
 end 
