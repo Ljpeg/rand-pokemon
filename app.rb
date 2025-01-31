@@ -1,15 +1,31 @@
 require "sinatra"
 require "sinatra/reloader"
+require "http"
+require "json"
 
 
 get("/") do
   "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
+  <h1>Welcome to your Pokemon Generator</h1>
+  <a href='/new'> Start Generating Pokemon</a>
   "
+  erb(:home)
 end
 
 get("/new") do
-#  make API request to get a random pokemon
+random_id = rand(1..1025)
+url = "https://pokeapi.co/api/v2/pokemon/" + "#{random_id}"
 
+results = HTTP.get(url)
+parsed_results = JSON.parse(results)
+
+@name = parsed_results["forms"][0]["name"].capitalize
+@height = parsed_results["height"]
+@weight = parsed_results["weight"]
+@types = parsed_results["types"].map { |i| i["type"]["name"] }
+@moves = parsed_results["moves"].map { |i| i["move"]["name"]}
+@num_moves = parsed_results["moves"].count
+@random_move = @moves.sample
+
+erb(:pokemon)
 end 
