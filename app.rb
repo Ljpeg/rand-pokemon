@@ -3,8 +3,13 @@ require "sinatra/reloader"
 require "http"
 require "json"
 
+# Set to serve static files like css
 set :public_folder, File.dirname(__FILE__) + '/public'
+
+#  Set the bind address to '0.0.0.0' so that the app can accept connections from all network interfaces
 set :bind, '0.0.0.0'
+
+# Set the port to the value of the PORT environment variable, or default to 10000 if not set.
 set :port, ENV['PORT'] || 10000 # Optionally set a custom port
 
 
