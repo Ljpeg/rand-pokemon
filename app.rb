@@ -4,6 +4,9 @@ require "http"
 require "json"
 
 set :public_folder, File.dirname(__FILE__) + '/public'
+set :bind, '0.0.0.0'
+set :port, ENV['PORT'] || 10000 # Optionally set a custom port
+
 
 get("/") do
   "
