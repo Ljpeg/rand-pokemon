@@ -30,7 +30,7 @@ jobs:
           ruby-version: "3.2.1"
           bundler-cache: true
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: bundle exec rails db:schema:load
       # This runs the tests in the spec/ folder
       - name: Run rspec tests
         run: bundle exec rspec
