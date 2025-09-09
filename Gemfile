@@ -6,7 +6,7 @@ ruby '3.2.1'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
-gem 'rails', "~> 8.0.0"
+gem 'rails', '~> 8.0.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
