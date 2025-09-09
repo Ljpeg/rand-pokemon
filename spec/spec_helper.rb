@@ -4,13 +4,13 @@ require 'capybara/dsl'
 require 'draft_matchers'
 require 'rspec-html-matchers'
 require 'capybara/rspec'
-require "#{File.expand_path('support/json_output_formatter', __dir__)}"
-require "#{File.expand_path('support/hint_formatter', __dir__)}"
-require "#{File.expand_path('support/headless_chrome', __dir__)}"
+require File.expand_path('support/json_output_formatter', __dir__).to_s
+require File.expand_path('support/hint_formatter', __dir__).to_s
+require File.expand_path('support/headless_chrome', __dir__).to_s
 
 # setup for hints
 require 'i18n'
-I18n.load_path += Dir[File.expand_path('support', __dir__) + '/*.yml']
+I18n.load_path += Dir["#{File.expand_path('support', __dir__)}/*.yml"]
 I18n.default_locale = :en # (note that `en` is already the default!)
 
 # set environment to test

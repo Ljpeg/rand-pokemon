@@ -4,7 +4,7 @@ require 'http'
 require 'json'
 
 # Set to serve static files like css
-set :public_folder, File.dirname(__FILE__) + '/public'
+set :public_folder, "#{File.dirname(__FILE__)}/public"
 
 #  Set the bind address to '0.0.0.0' so that the app can accept connections from all network interfaces
 set :bind, '0.0.0.0'
@@ -18,7 +18,7 @@ end
 
 get('/new') do
   random_id = rand(1..1025)
-  url = 'https://pokeapi.co/api/v2/pokemon/' + "#{random_id}"
+  url = "https://pokeapi.co/api/v2/pokemon/#{random_id}"
 
   results = HTTP.get(url)
   parsed_results = JSON.parse(results)
@@ -33,10 +33,10 @@ get('/new') do
   @random_move = @moves.sample
 
   @pic = [
-  sprites.fetch('front_default'),
-  sprites.fetch('front_shiny'),
-  sprites.fetch('front_female'),
-].compact.at(0)
+    sprites.fetch('front_default'),
+    sprites.fetch('front_shiny'),
+    sprites.fetch('front_female')
+  ].compact.at(0)
 
   erb(:pokemon)
 end
