@@ -22,6 +22,7 @@ get('/new') do
 
   results = HTTP.get(url)
   parsed_results = JSON.parse(results)
+  sprites = parsed_results.fetch('sprites')
 
   @name = parsed_results['forms'][0]['name'].capitalize
   @height = parsed_results['height']
@@ -30,7 +31,12 @@ get('/new') do
   @moves = parsed_results['moves'].map { |i| i['move']['name'] }
   @num_moves = parsed_results['moves'].count
   @random_move = @moves.sample
-  @pic = parsed_results['sprites']['front_default'] || parsed_results['sprites']['front_shiny'] || parsed_results['sprites']['front_female']
+
+  @pic = [
+  sprites.fetch('front_default'),
+  sprites.fetch('front_shiny'),
+  sprites.fetch('front_female'),
+].compact.at(0)
 
   erb(:pokemon)
 end
